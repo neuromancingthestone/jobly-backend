@@ -7,10 +7,8 @@ let db;
 
 if (process.env.NODE_ENV === "production") {
   db = new Client({
-//    connectionString: getDatabaseUri(),
-    database: getDatabaseUri(),
-    user: 'robleo',
-    password: 'pass',
+    connectionString: getDatabaseUri(),
+//    database: getDatabaseUri(),
     ssl: {
       rejectUnauthorized: false
     }
@@ -27,27 +25,3 @@ if (process.env.NODE_ENV === "production") {
 db.connect();
 
 module.exports = db;
-
-/* "use strict";
-
-const { Client } = require("pg");
-const { getDatabaseUri } = require("./config");
-
-let db;
-
-if (process.env.NODE_ENV === "production") {
-  db = new Client({
-    connectionString: getDatabaseUri(),
-    ssl: {
-      rejectUnauthorized: false
-    }
-  });
-} else {
-  db = new Client({
-    connectionString: getDatabaseUri()
-  });
-}
-
-db.connect();
-
-module.exports = db; */
